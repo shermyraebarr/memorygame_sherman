@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+header{
+    font-family: 'Gluten', cursive;
+    padding: 20px 30px 40px;
+    text-align: center;
+    color: white;
+}
+
+ 
+
+body{
+    height: 100vh;
+    background: darkorchid;
+    display: flex;
+
+}
+.memory-game{
+    width: 640px;
+    height: 640px;
+    display: flex;
+    flex-wrap: wrap;
+    border: 2px solid lime;
+    margin: auto;
+    
+}
+.memory-card{
+    width: calc(25% - 10px);
+    height: calc(33.33% - 10px);
+    margin: 5px;
+    transform: scale(1);
+}
+
+.memory-card:active{
+    transform: scale (.97);
+    transition: transform .2s;
+}
+
+.front-face, .back-face{
+    border: 2px solid deeppink;
+    position: absolute;
+}
+
+img{
+    width: 149px;
+    height: 201.98px;
+}
