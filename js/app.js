@@ -1,54 +1,59 @@
 // create cards array containing all cards
-let cards = document.getElementsByClassName("card");
+const cards = document.querySelectorAll('.memory-card');
 let arrayOfCards = Array.from(cards); 
 
-// add event listeners to each card to display card when clicked
+// add event listeners to each card to flip card when clicked
 for (var i = 0; i < arrayOfCards.length; i++) {
     cards[i].addEventListener('click', flipCard); 
 };
 
-// //PUT IN CSS
-// .flipCard {
-//     transform: rotateY(180deg);
-// }
-
-//create variables for first card and second card and boolean to mark if card has been flipped
 let hasFlippedCard = false;
 let firstCard, secondCard;
 
-//flip your card
+// flip card
 function flipCard() {
     this.classList.toggle('flip');
-
     if (!hasFlippedCard) {
+        // first click
         hasFlippedCard = true;
         firstCard = this;
         return;
     }
-
-    secondCard = this;
+    // assign value to secondCard
     hasFlippedCard = false;
+    secondCard = this;
 
     checkForMatch();
 }
 
-//check if cards match
+// check if card values match
 function checkForMatch() {
-    if (firstCard === secondCard) { 
+    // if match, disable flip
+    if (firstCard.dataset.framework === secondCard.dataset.framework) {
         disableCards();
         return;
     }
-
-    unflipCards()
+    // no match --> flip card back over
+    unflipCards();
 }
 
-//disable flip event if cards match
+
+// shuffle cards using immediately invoked function
+(function shuffle() {
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    });
+}) ()
+
+
+// define function to disable card flip
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 }
 
-//flip cards again if they don't match
+// define function to flip cards back over
 function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove('flip');
@@ -56,23 +61,7 @@ function unflipCards() {
     }, 1500);
 }
 
-//count all moves player makes
-function moveCoounter() {
-    moves ++;
-    counter.innerHTML = moves;
-}
 
-//NEED TO ADD FUNCTION THAT RESTARTS GAME IF 
-
-//shuffle cards using immediately invoked function
-(function shuffle() {
-    cards.forEach(card => {
-        let randomPos = math.floor(math.random() * 9);
-        card.style.order = randomPos;
-    });
-}) ();
-
-//adding comment
 
 
 
