@@ -12,6 +12,15 @@ let hasFlippedCard = false;
 let firstCard, secondCard;
 var playerMoves = 0;
 
+// shuffle cards using immediately invoked function
+(function shuffle() {
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 12);
+        card.style.order = randomPos;
+    });
+}) ()
+
+
 // flip card
 function flipCard() {
     this.classList.add('flip');
@@ -55,13 +64,6 @@ function checkForMatch() {
 }
 
 
-// shuffle cards using immediately invoked function
-(function shuffle() {
-    cards.forEach(card => {
-        let randomPos = Math.floor(Math.random() * 12);
-        card.style.order = randomPos;
-    });
-}) ()
 
 
 // define function to disable card flip
