@@ -7,26 +7,49 @@ for (var i = 0; i < arrayOfCards.length; i++) {
     cards[i].addEventListener('click', flipCard); 
 };
 
-
-//create variables for first card and second card and boolean to mark if card has been flipped
-let hasFlippedCard = false;
+let hasFlippedCard =false;
 let firstCard, secondCard;
+var playerMoves =0;
+//shuffle cards
+
+(function shuffle(){
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random * 12);
+        card.style.order =randomPos;
+    });
+}) ()
+
+
 
 //flip your card
 function flipCard() {
-    this.classList.toggle('flip');
+    this.classList.add('flip');
 
     if (!hasFlippedCard) {
+        //first card is firt click
         hasFlippedCard = true;
         firstCard = this;
         return;
     }
-
-    secondCard = this;
+//assign value to secondCard 
     hasFlippedCard = false;
+    secondCard = this;
+    playerMoves ++;
 
     checkForMatch();
 }
+
+// count remaining moves and update HTML element
+totalMoves = parseInt(document.getElementById('moves').innerHTML)
+
+function moveCounter() {
+    var remainingMoves = totalMoves - playerMoves;
+    document.getElementById('moves').innerText = remainingMoves;
+    return;
+}
+
+console.log(remainingMoves)
+
 
 //check if cards match
 function checkForMatch() {
@@ -34,29 +57,50 @@ function checkForMatch() {
         disableCards();
         return;
     }
-
+//no match
     unflipCards()
 }
-(function shuffle(){
-    cards.forEach(card => {
-        let randomPos = Math.floor(Math.random() * 12);
-        card.style.order = randomPos;
-    });
-}) ()
 
-//disable flip event if cards match
+// define function to disable card flip
 function disableCards() {
     firstCard.removeEventListener('click', flipCard);
     secondCard.removeEventListener('click', flipCard);
 }
 
-//flip cards again if they don't match
+// define function to flip cards back over
 function unflipCards() {
     setTimeout(() => {
         firstCard.classList.remove('flip');
         secondCard.classList.remove('flip');
     }, 1500);
 }
+
+
+
+
+
+
+
+// (function shuffle(){
+//     cards.forEach(card => {
+//         let randomPos = Math.floor(Math.random() * 12);
+//         card.style.order = randomPos;
+//     });
+// }) ()
+
+// //disable flip event if cards match
+// function disableCards() {
+//     firstCard.removeEventListener('click', flipCard);
+//     secondCard.removeEventListener('click', flipCard);
+// }
+
+// //flip cards again if they don't match
+// function unflipCards() {
+//     setTimeout(() => {
+//         firstCard.classList.remove('flip');
+//         secondCard.classList.remove('flip');
+//     }, 1500);
+// }
 
 
 //moves
