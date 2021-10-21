@@ -4,17 +4,20 @@ let arrayOfCards = Array.from(cards);
 
 // add event listeners to each card to flip card when clicked
 for (var i = 0; i < arrayOfCards.length; i++) {
-    cards[i].addEventListener('click', flipCard); 
+    cards[i].addEventListener('click', flipCard);
+    cards[i].addEventListener('click', moveCounter); 
 };
 
 let hasFlippedCard = false;
 let firstCard, secondCard;
+var playerMoves = 0;
 
 // flip card
 function flipCard() {
-    this.classList.toggle('flip');
+    this.classList.add('flip');
+    
     if (!hasFlippedCard) {
-        // first click
+        // first card is first click
         hasFlippedCard = true;
         firstCard = this;
         return;
@@ -22,9 +25,23 @@ function flipCard() {
     // assign value to secondCard
     hasFlippedCard = false;
     secondCard = this;
+    playerMoves ++;
 
     checkForMatch();
 }
+
+
+// count remaining moves and update HTML element
+totalMoves = parseInt(document.getElementById('moves').innerHTML)
+
+function moveCounter() {
+    var remainingMoves = totalMoves - playerMoves;
+    document.getElementById('moves').innerText = remainingMoves;
+    return;
+}
+
+console.log(remainingMoves)
+
 
 // check if card values match
 function checkForMatch() {

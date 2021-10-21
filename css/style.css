@@ -11,8 +11,19 @@ header{
     text-align: center;
     color: white;
 }
- 
-body{
+
+.score-panel {
+    font-family: 'Gluten', cursive;
+    padding: 20px 30px 40px;
+    text-align: center;
+    color: white;
+}
+
+#moves {
+    color: red
+}
+
+body {
     height: 100vh;
     background: darkorchid;
     display: flex;
