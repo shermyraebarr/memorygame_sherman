@@ -10,7 +10,34 @@ header{
     color: white;
 }
 
- 
+ .reset-btn{
+     cursor: pointer;
+ }
+ .btn{
+background: deeppink;
+border-radius: 1em;
+border: none;
+color: white;
+padding: 0.8em;
+
+
+ }
+
+ .moves-counter{
+     padding: 0.5em;
+
+ }
+ .timer-containter{
+     background: deeppink;
+     border-radius: 0.5em;
+     color: white;
+     margin: 0.5em;
+     padding: 0.5em;
+ }
+
+ .timer{
+     font-size: 1em;
+ }
 
 body{
     height: 100vh;
@@ -32,6 +59,11 @@ body{
     height: calc(33.33% - 10px);
     margin: 5px;
     transform: scale(1);
+    position: relative;
+    transform: scale (1);
+    transform-style:preserve-3d;
+    transition: transform .5s;
+    cursor: pointer;
 }
 
 .memory-card:active{
@@ -40,11 +72,22 @@ body{
 }
 
 .front-face, .back-face{
+    width: 100%;
+    height: 100%;
     border: 2px solid deeppink;
+    border-radius: 5px;
     position: absolute;
+    backface-visibility: hidden;
 }
 
 img{
     width: 149px;
     height: 201.98px;
 }
+
+ .memory-card.flip {
+   transform: rotateY(180deg);
+ }
+ .front-face{
+     transform: rotateY(180deg);
+ }
