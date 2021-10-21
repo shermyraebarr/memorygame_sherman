@@ -79,7 +79,12 @@ function unflipCards() {
     }, 1500);
 }
 
+// //game timer
 
+// var timer = new Timer();
+// timer.start();
 
-
+// timer.addEventListener('secondsUpdated', function (e) {
+//     $('#basicUsage').html(timer.getTimeValues().toString());
+// });
 

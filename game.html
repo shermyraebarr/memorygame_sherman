@@ -7,21 +7,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
 <link href="https://fonts.googleapis.com/css2?family=Gluten:wght@500&display=swap" rel="stylesheet">
-    <title>Memory Game</title>
+
+
+<title>Memory Game</title>
 </head>
 <body>
 <header>
     <h1>MEMORY GAME</h1><br><br>
 
-<span class ="moves-counter">0</span> Moves
-<div class ="timer-container">
-    <span class ="timer"><i class="fa fa-hourglass-start"></i> Timer: 00:00</span>
-</div><br><br>
-<div class ="reset">
-    <buton class="btn reset-btn">Reset <i class="fa fa-repeat"></i></buton>
-</div>
+    <section class="score-panel">
+        <h2>You have <span id="moves">15</span> moves left!</h2>
+      </section>
+
+
+
 </section>
 </header>
+
 <!-- <section class="win-game">
 <div id="modal" class ="modal">
 <div class ="modal-content">
@@ -99,14 +101,14 @@
           <img class="back-face" src="/imgmemory/frontcard.png" alt="QuestionMark" />
         </div>
       </section>
-      <section class="score-panel">
-        <h2>You have <span id="moves">15</span> moves left!</h2>
-      </section>
+    
    
 
     
   
 </div>
+
 <script src = "js/app.js"></script>
+
 </body>
 </html>
